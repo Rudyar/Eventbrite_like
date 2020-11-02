@@ -10,7 +10,7 @@ class Event < ApplicationRecord
   validate :multiple_of_five?
   validates :title, length: {minimum: 5, maximum: 140}, presence: true
   validates :description, length: {minimum: 20, maximum: 1000}, presence: true
-  validates :price, numericaly: {only_integer: true, greater_than: 0, less_than: 1000}
+  validates :price, numericality: {only_integer: true, greater_than: 0, less_than: 1000}
   validates :location, presence: true
 
   def start_must_be_before_date_now
