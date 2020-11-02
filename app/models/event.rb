@@ -7,7 +7,7 @@ class Event < ApplicationRecord
   validates_presence_of :start_date
   validate :start_must_be_before_date_now 
   validates :duration, presence: true, numericality: { greater_than_or_equal_to: 1 }
-  validates :multiple_of_five?
+  validate :multiple_of_five?
   validates :title, length: {minimum: 5, maximum: 140}, presence: true
   validates :description, length: {minimum: 20, maximum: 1000}, presence: true
   validates :price, numericaly: {only_integer: true, greater_than: 0, less_than: 1000}
