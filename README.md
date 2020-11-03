@@ -1,24 +1,27 @@
-# README
+## Eventbrite like
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Eventbrite like made during THP bootcamp.
 
-Things you may want to cover:
+This website was made using Ruby on Rails and cool gems (like 'Devise').
 
-* Ruby version
+Also, it's online on https://eventbrite-rud.herokuapp.com/
 
-* System dependencies
+# Run the website in your local server :
 
-* Configuration
+Open the folder in yout terminal and
+```shell
+$ bundle install
+```
 
-* Database creation
+```shell
+$ rails db:create
+```
 
-* Database initialization
+```shell
+$ rails db:migrate
+```
 
-* How to run the test suite
+```shell
+$ rails server
+```
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

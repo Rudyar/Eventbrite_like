@@ -1,8 +1,18 @@
-<div class="jumbotron">
-  <div class="container">
-    <h1>Découvres les événements de ta ville !</h1>
+<!-- Jumbotron -->
+<div class="jumbotron text-center">
+
+  <!-- Title -->
+  <h4 class="card-title h4 pb-2"><strong>Découvres les événements de ta ville !</strong></h4>
+
+  <!-- Card image -->
+  <div class="view overlay my-4">
+    <img src="https://cdn.france-montagnes.com/sites/default/files/styles/header_webzine/public/header/banniere-yoga-montagne.png?itok=cDKhWQBp" class="img-fluid" alt="">
+      <div class="mask rgba-white-slight"></div>
   </div>
+
+  <h5 class="indigo-text h5 mb-4">⏬ Les derniers événements ⏬</h5>
 </div>
+<!-- Jumbotron -->
 
  <div class="row justify-content-center">
     <% @events.each do |event| %>
