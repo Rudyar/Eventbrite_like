@@ -1,2 +1,23 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<ul class="list-group">
+  <%= link_to "Editer mes infos", edit_user_registration_path(@user.id), :class => "btn btn-outline-secondary" %>
+  <li class="list-group-item">Nom : <%=@user.first_name%></li>
+  <li class="list-group-item">Prénom : <%=@user.last_name%></li>
+  <li class="list-group-item">Email : <%=@user.email%></li>
+  <li class="list-group-item">Description : <%=@user.description%></li>
+</ul>
+
+<div class="container text-center p-2">
+  <h2>Mes événements créés</h2>
+  <div class="row justify-content-center">
+  <% @events.each do |event| %>
+    <div class="card m-3" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%= event.title %></h5>
+        <p class="card-text text-muted"><small>blabla</small></p>
+        <%= link_to "See the full event", event_path(event.id), :class => "btn btn-outline-secondary" %>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>
+
