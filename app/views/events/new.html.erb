@@ -1,1 +1,46 @@
-<h1>New event !</h1>
+<div class="container">
+
+  <% if @event.errors.any? %>
+      <% @event.errors.full_messages.each do |message| %>
+        <div class="alert alert-danger" role="alert">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <br><br><br>
+      <%= form_for @event, html: { class: "form-signin mt-3" } do |f| %>
+        <h1 class="h3 mb-3 font-weight-normal text-center">Créer un événement</h1>
+        <div class="form-group">
+          <%= f.label :title, "Tire de l'événement" %><br />
+          <%= f.text_field :title, autofocus: true, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :start_date, "Date et heure de début (YYYY-MM-DD HH:MM:SS)" %><br />
+          <%= f.text_field :start_date, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :duration, "Durée de l'événement en minutes" %><br />
+          <%= f.text_field :duration, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :description, "Description de l'événement" %><br />
+          <%= f.text_area :description, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :price, "Prix de l'événement" %><br />
+          <%= f.text_field :price, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :location, "Où va se passer l'événement" %><br />
+          <%= f.text_field :location, class: "form-control" %>
+        </div>
+        <div class="actions mt-5">
+          <%= f.submit "Créer", class: "btn btn-lg btn-primary btn-block" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="container text-center">
+
+  <h2 class="p-4"><%= @event.title %></h2>
+
+  <p><b>Organisateur:</b> <%= @event.event_admin.email %></p>
+  <p><b>Ca se passe où ?</b> <%= @event.location%></p>
+  <p class="p-2"><b>Description:</b> <%= @event.description %></p>
+  <p><b>Ca commence quand ?</b> <%= @event.start_date%> </p>
+  <p><b>Ca finit quand ?</b> <%= @end_date_time%> </p>
+  <p><b>Son prix:</b> <%= @event.price%> € </p>
+
+</div>
