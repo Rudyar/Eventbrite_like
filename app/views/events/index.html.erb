@@ -19,9 +19,9 @@
       <div class="card m-3" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title"><%= event.title %></h5>
-          <p class="card-text">Créé par: <%= event.event_admin.email %></p>
-          <p class="card-text text-muted"><small>blabla</small></p>
-          <%= link_to "See the full event", event_path(event.id), :class => "btn btn-outline-secondary" %>
+          <p class="card-text"><%=event.start_date%></p>
+          <p class="card-text text-muted"><small>Créé par: <%= event.event_admin.email %></small></p>
+          <%= link_to "Page de l'événement", event_path(event.id), :class => "btn btn-outline-secondary" %>
         </div>
       </div>
     <% end %>
