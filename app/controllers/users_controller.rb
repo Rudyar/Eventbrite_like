@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:show]
-  # before_filter :check_user, :only => [:show]
 
   def check_user
      @user = User.find(params[:id])
