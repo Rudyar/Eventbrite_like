@@ -4,7 +4,7 @@ class Attendance < ApplicationRecord
   belongs_to :user
   belongs_to :event
 
-  def subcription_send
+  def subscription_send
     event = self.event
     event_admin = event.event_admin
     UserMailer.event_subscription(event_admin, event, user).deliver_now

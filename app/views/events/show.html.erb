@@ -9,4 +9,12 @@
   <p><b>Ca finit quand ?</b> <%= @end_date_time%> </p>
   <p><b>Son prix:</b> <%= @event.price%> € </p>
 
+  <% if user_signed_in? && @event.event_admin != current_user%>
+      <%= link_to "S'inscrire à l'événement", '#', class: "nav-link btn btn-outline-success mx-2 my-2" %>
+
+  
+  <%end%>
+
 </div>
+
+
