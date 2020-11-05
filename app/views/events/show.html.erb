@@ -1,7 +1,11 @@
 <div class="container text-center">
   <div class="container">
     <h2 class="p-4"><%= @event.title %></h2>
+    <%if @event.event_picture.attached?%>
       <%= image_tag @event.event_picture, alt: 'event picture',class: "img-thumbnail", style: "width: 500px" %>
+    <%else%>
+      <p></p>
+    <%else%>
   </div>
   
 
