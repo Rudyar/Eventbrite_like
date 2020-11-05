@@ -21,7 +21,7 @@
           <h5 class="card-title"><%= event.title %></h5>
           <p class="card-text"><%=event.start_date%></p>
           <p class="card-text text-muted"><small>Créé par: <%= event.event_admin.email %></small></p>
-          <%= link_to "Page de l'événement", event_path(event.id), :class => "btn btn-outline-secondary" %>
+          <%= link_to "Page de l'événement", event_path(event.id), :class => "btn btn-outline-primary" %>
         </div>
       </div>
     <% end %>

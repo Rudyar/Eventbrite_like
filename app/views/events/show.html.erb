@@ -9,11 +9,13 @@
   <p><b>Ca finit quand ?</b> <%= @end_date_time%> </p>
   <p><b>Son prix:</b> <%= @event.price%> € </p>
 
-  <% if user_signed_in? && @event.event_admin != current_user%>
-      <%= link_to "S'inscrire à l'événement", '#', class: "nav-link btn btn-outline-success mx-2 my-2" %>
-
-  
-  <%end%>
+  <% if !@event.is_admin?(current_user) && !@event.is_registred?(current_user) %>
+      <%= link_to "S'inscrire à l'événement", new_event_attendance_path(@event.id) , class: "btn btn-outline-success"%>
+    <% elsif !@event.is_admin?(current_user) && @event.is_registred?(current_user) %>
+      <%= link_to "Tu es déjà inscrit", new_event_attendance_path(@event.id) , class: "btn btn-primary"%>
+    <% elsif @event.is_admin?(current_user) %>
+      <%= link_to "Infos de l'événement", event_attendances_path(@event.id) , class: "btn btn-primary"%>
+  <% end %>
 
 </div>
 

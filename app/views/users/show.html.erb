@@ -1,23 +1,27 @@
-<ul class="list-group">
-  <%= link_to "Editer mes infos", edit_user_registration_path(@user.id), :class => "btn btn-outline-secondary" %>
-  <li class="list-group-item">Nom : <%=@user.first_name%></li>
-  <li class="list-group-item">Prénom : <%=@user.last_name%></li>
-  <li class="list-group-item">Email : <%=@user.email%></li>
-  <li class="list-group-item">Description : <%=@user.description%></li>
-</ul>
+<div class="container p-2">
+  <div class="container p-2">
+    <ul class="list-group p-2">
+      <%= link_to "Editer mes identifiants", edit_user_registration_path(@user), :class => "btn btn-primary" %>
+      <li class="list-group-item">Nom : <%=@user.first_name%></li>
+      <li class="list-group-item">Prénom : <%=@user.last_name%></li>
+      <li class="list-group-item">Email : <%=@user.email%></li>
+      <li class="list-group-item">Description : <%=@user.description%></li>
+      <%= link_to "Editer mes informations", edit_user_path(@user), :class => "btn btn-primary" %>
+    </ul>
+  </div>
 
-<div class="container text-center p-2">
-  <h2>Mes événements créés</h2>
-  <div class="row justify-content-center">
-  <% @events.each do |event| %>
-    <div class="card m-3" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title"><%= event.title %></h5>
-        <p class="card-text text-muted"><small>blabla</small></p>
-        <%= link_to "See the full event", event_path(event.id), :class => "btn btn-outline-secondary" %>
+  <div class="container text-center">
+    <h2>Mes événements créés</h2>
+    <div class="row justify-content-center">
+    <% @events.each do |event| %>
+      <div class="card m-3" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%= event.title %></h5>
+          <p class="card-text text-muted"><small>blabla</small></p>
+          <%= link_to "See the full event", event_path(event.id), :class => "btn btn-outline-primary" %>
+        </div>
       </div>
+    <% end %>
     </div>
-  <% end %>
   </div>
 </div>
-

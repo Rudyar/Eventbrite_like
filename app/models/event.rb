@@ -17,4 +17,17 @@ class Event < ApplicationRecord
   def future_date
     errors.add(:start_date, "Event can't be in the past") unless start_date > DateTime.now
   end
+
+  def is_admin?(user)
+    self.event_admin.id == user.id ? true : false
+  end
+
+  def is_registred?(user)
+    if self.attendances
+      self.attendances.find_by(user: user.id) ? true : false
+    else 
+      puts "n'a pas attendances"
+      return
+    end
+  end
 end

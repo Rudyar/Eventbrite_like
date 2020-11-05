@@ -1,4 +1,7 @@
 class EventsController < ApplicationController
+  before_action :is_admin?, only: [:edit]
+
+  
   def index
     @events = Event.all
   end
@@ -22,6 +25,12 @@ class EventsController < ApplicationController
       render :new
     end
   end
+
+  def is_admin?
+      @event = Event.find_by(id: params[:id])
+      redirect_to root_path unless @event.is_admin?(current_user)
+  end
+
 
   private
 
