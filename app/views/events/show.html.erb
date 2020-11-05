@@ -1,6 +1,9 @@
 <div class="container text-center">
-
-  <h2 class="p-4"><%= @event.title %></h2>
+  <div class="container">
+    <h2 class="p-4"><%= @event.title %></h2>
+      <%= image_tag @event.event_picture, alt: 'event picture',class: "img-thumbnail", style: "width: 500px" %>
+  </div>
+  
 
   <p><b>Organisateur:</b> <%= @event.event_admin.email %></p>
   <p><b>Ca se passe où ?</b> <%= @event.location%></p>

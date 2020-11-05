@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :show, :edit, :create, :destroy]
   before_action :is_admin?, only: [:edit]
 
   
@@ -41,7 +42,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :start_date, :duration, :description, :price, :location)
+    params.require(:event).permit(:title, :start_date, :duration, :description, :price, :location, :event_picture)
     
   end
 

@@ -1,0 +1,2 @@
+class EventPicturesController < ApplicationController
+end

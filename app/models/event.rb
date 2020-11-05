@@ -5,17 +5,20 @@ class Event < ApplicationRecord
   validates :description, presence: true, length: {in: 20..1000}
   validates :price, presence:true, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 1000 }
   validates :location, presence: true
+  validate :event_picture?
 
   has_many :attendances
   has_many :users, through: :attendances
   belongs_to :event_admin, class_name: "User"
 
+  has_one_attached :event_picture
+
   def multiple_of_five?
-    errors.add(:duration, "should be a multiple of 5.") unless duration % 5 == 0
+    errors.add(:duration, ": La durée doit être un multiple de 5") unless duration % 5 == 0
   end
 
   def future_date
-    errors.add(:start_date, "Event can't be in the past") unless start_date > DateTime.now
+    errors.add(:start_date, ": Un événement ne peux pas être dans le passé") unless start_date > DateTime.now
   end
 
   def is_admin?(user)
@@ -29,5 +32,11 @@ class Event < ApplicationRecord
       puts "n'a pas attendances"
       return
     end
+  end
+
+  def event_picture?
+    errors.add(:event_picture, ": Veuillez ajouter une photo ") unless self.event_picture.attached? == true
+
+    
   end
 end
