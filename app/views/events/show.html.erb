@@ -15,6 +15,7 @@
       <%= link_to "Tu es déjà inscrit", new_event_attendance_path(@event.id) , class: "btn btn-primary"%>
     <% elsif @event.is_admin?(current_user) %>
       <%= link_to "Infos de l'événement", event_attendances_path(@event.id) , class: "btn btn-primary"%>
+      <%= link_to "Supprimer l'événement", event_path(@event.id) , class: "btn btn-danger", :method => 'DELETE', :data => {:confirm => "Tu es sûr de vouloir supprimer l'événement?"} %>
   <% end %>
 
 </div>

@@ -26,6 +26,12 @@ class EventsController < ApplicationController
     end
   end
 
+  def destroy
+    @event = Event.find(params[:id]).destroy
+    redirect_to root_path, success: "Evénment supprimé !"
+
+  end
+
   def is_admin?
       @event = Event.find_by(id: params[:id])
       redirect_to root_path unless @event.is_admin?(current_user)
