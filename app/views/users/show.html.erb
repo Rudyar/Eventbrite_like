@@ -1,5 +1,13 @@
 <div class="container p-2">
   <div class="container p-2">
+    <div class="container p-2 text-center ">
+    <%if @user.profile_picture.attached?%>
+      <%= image_tag @user.profile_picture, alt: 'profile_picture', id: 'profile_picture'%>
+    <%else%>
+      <p>=== Ajoute une photo de profile ! ===</p>
+      <%end%>
+  </div>
+
     <ul class="list-group p-2">
       <%= link_to "Editer mes identifiants", edit_user_registration_path(@user), :class => "btn btn-primary" %>
       <li class="list-group-item">Nom : <%=@user.first_name%></li>
