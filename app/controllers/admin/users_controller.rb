@@ -1,32 +1,32 @@
-class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:show]
+class Admin::UsersController < Admin::BaseController
 
-  def check_user
-     @user = User.find(params[:id])
-     unless current_user.id == @user.id
-        redirect_to root_path        
-     end
+  def index
+    @users = User.all   
   end
 
   def show
-    check_user
     @user = User.find(params[:id])
     @events = Event.where(event_admin: @user)
   end
 
-
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
     
   end
 
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to user_path(@user.id), success: "Profile édité"
+      redirect_to admin_users_path, success: "Profil édité avec succès"
     else
       render :edit, alert: "Impossible d'éditer le profil :"
     end
+  end
+
+  def destroy
+    @user = User.find(params[:id]).destroy
+    redirect_to admin_users_path, success: "Profil supprimé avec succès"
+
   end
 
   private
