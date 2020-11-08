@@ -5,8 +5,8 @@
           <p class="card-text text-muted">Email: <%= user.email %></p>
           <h5 class="card-title"><%= user.first_name %></h5>
           <p class="card-text"><%=user.last_name%></p>
-          <%= link_to "Supprimer l'utilisateur", admin_user_path(user.id) , class: "btn btn-danger", :method => 'DELETE', :data => {:confirm => "Tu es sûr de vouloir supprimer l'utilisateur"} %>
-          <%= link_to  "Modifier les infos de cet utilisateur", edit_admin_user_path(user.id), :class => "btn btn-primary" %>
+           <p class="card-text"> <%= link_to "Supprimer l'utilisateur", admin_user_path(user.id) , class: "btn btn-danger", :method => 'DELETE', :data => {:confirm => "Tu es sûr de vouloir supprimer l'utilisateur"} %></p>         
+          <p class="card-text"><%= link_to  "Modifier les infos de cet utilisateur", edit_admin_user_path(user.id), :class => "btn btn-primary" %></p>
         </div>
       </div>
     <% end %>

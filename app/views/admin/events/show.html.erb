@@ -1,0 +1,33 @@
+<div class="container text-center p-2">
+  <div class="container text-center p-2">
+    <h2 class="p-4"><%= @event.title %></h2>
+    <%if @event.event_picture.attached?%>
+      <%= image_tag @event.event_picture, alt: 'event picture', id: 'event_picture'%>
+    <%else%>
+      <p></p>
+    <%end%>
+  </div>
+    
+  <div class="container p-2">
+    <p><u>Organisateur:</u> <%= @event.event_admin.email %></p>
+    <p><u>Ca se passe où ?</u> <%= @event.location%></p>
+    <p class="p-2"><u>Description:</u> <%= @event.description %></p>
+    <p><u>Ca commence quand ?</u> <%= @event.start_date%> </p>
+    <p><u>Ca finit quand ?</u> <%= @end_date_time%> </p>
+    <p><u>Son prix:</u> <%= @event.price%> € </p>
+
+    <% if !@event.is_admin?(current_user) && !@event.is_registred?(current_user) %>
+        <%= link_to "S'inscrire à l'événement", new_event_attendance_path(@event.id) , class: "btn btn-outline-success"%>
+      <% elsif !@event.is_admin?(current_user) && @event.is_registred?(current_user) %>
+        <%= link_to "Tu es déjà inscrit", new_event_attendance_path(@event.id) , class: "btn btn-primary"%>
+      <% elsif @event.is_admin?(current_user) %>
+        <%= link_to "Infos de l'événement", event_attendances_path(@event.id) , class: "btn btn-primary"%>
+        <%= link_to "Supprimer l'événement", event_path(@event.id) , class: "btn btn-danger", :method => 'DELETE', :data => {:confirm => "Tu es sûr de vouloir supprimer l'événement?"} %>
+        <%= link_to "Valider l'événement", admin_event_path(@event.id), method: 'put', :class => "btn btn-success" %>
+
+    <% end %>
+
+  </div>
+</div>
+
+

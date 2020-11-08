@@ -4,7 +4,7 @@ class EventsController < ApplicationController
 
   
   def index
-    @events = Event.all
+    @events = Event.where(validated: true)
   end
 
   def show
@@ -19,6 +19,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.event_admin = current_user
+    @event.validated = false
 
     if @event.save 
       redirect_to event_path(@event.id), success: "Evénement créé avec succès !"

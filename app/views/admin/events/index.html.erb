@@ -1,14 +1,17 @@
 <div class="row justify-content-center text-center">
-    <% @events.each do |event| %>
-      <div class="card m-3" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title"><%= event.title %></h5>
-          <p class="card-text"><%=event.start_date%></p>
-          <p class="card-text text-muted"><small>Créé par: <%= event.event_admin.email %></small></p>
-          <%= link_to "Page de l'événement", event_path(event.id), :class => "btn btn-outline-primary" %>
-        </div>
+  <% @events.each do |event| %>
+    <div class="card m-3" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%= event.title %></h5>
+        <p class="card-text"><%=event.start_date%></p>
+        <p class="card-text text-muted"><small>Créé par: <%= event.event_admin.email %></small></p>
+        <%= link_to "Page de l'événement", admin_event_path(event.id), :class => "btn btn-outline-primary" %>
+        <p>Evénement non validé</p>
+        <%= link_to "Valider l'événement", admin_event_path(event.id), method: 'put', :class => "btn btn-outline-success" %>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
+
+</div>
 
   
