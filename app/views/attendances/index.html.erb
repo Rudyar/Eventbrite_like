@@ -1,14 +1,1 @@
-<div class="container mt-4">
-  <h2 class="h3 mb-3 font-weight-normal text-center">La liste des participants pour : <%= @event.title %> </h2>
-  <div class="row justify-content-center">
-    <% @attendances.each do |attendance| %>
-      <div class="card m-3" style="width: 18rem;">
-        <div class="card-body">
-          <p>First name : <%= attendance.user.first_name %></p>
-          <p>Last name : <%= attendance.user.last_name %></p>
-          <p>Description : <%= attendance.user.description %></p>
-          <p>Email : <%= attendance.user.email %></p>
-        </div>
-    <% end %>
-  </div>
-</div>
+<%= render  "shared/attendances" %>

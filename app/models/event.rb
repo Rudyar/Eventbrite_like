@@ -2,7 +2,7 @@ class Event < ApplicationRecord
   validates :start_date, presence: true, if: :future_date
   validates :duration, presence: true, numericality: { only_integer: true, greater_than: 0 }, if: :multiple_of_five?
   validates :title, presence: true, length: {in: 5..140}
-  validates :description, presence: true, length: {in: 20..1000}
+  validates :description, presence: true, length: {in: 20..1000, message: "La description doit faire au moins 20 caratères"}
   validates :price, presence:true, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 1000 }
   validates :location, presence: true
   validate :event_picture?

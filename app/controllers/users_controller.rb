@@ -25,7 +25,8 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path(@user.id), success: "Profile édité"
     else
-      render :edit, alert: "Impossible d'éditer le profil :"
+      flash.now[:alert] = " "
+      render :edit
     end
   end
 

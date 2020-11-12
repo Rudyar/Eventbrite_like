@@ -1,0 +1,36 @@
+<div class="container mt-4 mb-4">
+  <section class="slice slice-lg">
+    <div class="container mt-3">
+      <div class="row row-grid justify-content-around align-items-center">
+        <div class="col-lg-5 order-lg-2">
+          <div class=" pr-lg-4">
+            <h2 class="p-4"><%= @event.title %></h2>
+            <h5><u>Ca commence quand ?</u> <%= @event.start_date%> </h5>
+            <h5><u>Ca finit quand ?</u> <%= @end_date_time%> </h5>
+            <h5><u>Ca se passe où ?</u> <%= @event.location%> </h5>
+            <p><u>Organisateur:</u> <%= @event.event_admin.email %></p>
+            <p class="lead mt-3 mb-3"><u>Description:</u> <%= @event.description %></p>
+            <h4><u>Son prix:</u> <%= @event.price%> € </h4>
+
+            <% if !@event.is_admin?(current_user) && !@event.is_registred?(current_user) %>
+              <%= link_to "S'inscrire à l'événement", new_event_attendance_path(@event.id) , class: "btn btn-outline-success"%>
+            <% elsif !@event.is_admin?(current_user) && @event.is_registred?(current_user) %>
+              <%= link_to "Tu es déjà inscrit", new_event_attendance_path(@event.id) , class: "btn btn-info"%>
+            <% elsif @event.is_admin?(current_user) %>
+              <%= link_to "Infos de l'événement", event_attendances_path(@event.id) , class: "btn btn-primary m-1"%>
+              <%= link_to "Supprimer l'événement", event_path(@event.id) , class: "btn btn-danger", :method => 'DELETE', :data => {:confirm => "Tu es sûr de vouloir supprimer l'événement?"} %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="col-lg-6 order-lg-1">
+        <%if @event.event_picture.attached?%>
+          <%= image_tag @event.event_picture, alt: 'event picture', class: "img-fluid img-center"%>
+        <%else%>
+          <p></p>
+        <%end%>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -24,7 +24,8 @@ class EventsController < ApplicationController
     if @event.save 
       redirect_to event_path(@event.id), success: "Evénement créé avec succès !"
     else
-      render :new, alert: "Problème dans la création de l'événement"
+      flash.now[:alert] = " "
+      render :new
     end
   end
 

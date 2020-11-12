@@ -1,4 +1,6 @@
-#event_picture {
-  width: 250px;
-  height: auto;
+.event_card_img{
+  height: 40vh;
+  max-width: 100%;
+  object-fit: contain;
+  padding-top: 10px;
 }

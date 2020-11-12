@@ -2,5 +2,6 @@
 *= require main
 *= require event_picture
 *= require profile_picture
-
+*= require footer
+*= require jumbotron
 */
